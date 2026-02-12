@@ -37,7 +37,7 @@ dayHabit.addEventListener("click", () => {
     document.querySelector(".footer").style.display = "none"
     document.querySelector(".habits").style.display = "flex"
     document.querySelector(".progress").style.display = "none"
-
+    main.classList.remove("main-appear")
 })
 
 transcription.addEventListener("click", () => {
@@ -46,6 +46,9 @@ transcription.addEventListener("click", () => {
     document.querySelector(".footer").style.display = "none"
     document.querySelector(".habits").style.display = "none"
     document.querySelector(".progress").style.display = "flex"
+    main.classList.remove("main-appear")
+
+    document.querySelector(".main-appear").classList.remove("active")
 })
 
 
@@ -56,6 +59,8 @@ start.addEventListener("click", () => {
     document.querySelector(".footer").style.display = "flex"
     document.querySelector(".habits").style.display = "none"
     document.querySelector(".progress").style.display = "none"
+
+    document.querySelector(".main-appear").classList.add("active")
 })
 
 
