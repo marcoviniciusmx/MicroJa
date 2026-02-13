@@ -123,7 +123,7 @@
         <section class="habits">
             <div class="daily-text-habits">
                 <h2>Hábitos de Hoje</h2>
-                <p class="date">quinta-feira, 12 de fevereiro</p>
+                <p class="date"></p>
                 <p class="description-daily-text">
                     Pequenas ações fazem grandes diferenças.
                     Complete o que puder, sem pressão.
@@ -134,6 +134,11 @@
             <div class="daily-cadrs">
 
                 <div class="content-daily-cards">
+
+                    <div class="star">
+                        <img src="./assets/star.png" alt="estrela">
+                    </div>
+
                     <div class="title-daily-cards">
                         <img src="./assets/feliz.png" alt="sorriso">
                         <h3>Sorria para o espelho</h3>
@@ -144,10 +149,15 @@
                         Tente.
                     </p>
 
-                    <button type="button"> Feito</button>
+                    <button type="button" class="btn-daily-cards"> Feito</button>
                 </div>
 
                 <div class="content-daily-cards">
+
+                    <div class="star">
+                        <img src="./assets/star.png" alt="estrela">
+                    </div>
+
                     <div class="title-daily-cards">
                         <img src="./assets/pulmao.png" alt="pulmao">
                         <h3>Faça 10 respirações conscientes</h3>
@@ -158,10 +168,15 @@
                         Volte ao presente.
                     </p>
 
-                    <button type="button"> Feito</button>
+                    <button type="button" class="btn-daily-cards"> Feito</button>
                 </div>
 
                 <div class="content-daily-cards">
+
+                    <div class="star">
+                        <img src="./assets/star.png" alt="estrela">
+                    </div>
+
                     <div class="title-daily-cards">
                         <img src="./assets/gota.png" alt="gota">
                         <h3>Beba um copo de água</h3>
@@ -172,10 +187,15 @@
                         Um copo basta.
                     </p>
 
-                    <button type="button"> Feito</button>
+                    <button type="button" class="btn-daily-cards"> Feito</button>
                 </div>
 
                 <div class="content-daily-cards">
+
+                    <div class="star">
+                        <img src="./assets/star.png" alt="estrela">
+                    </div>
+
                     <div class="title-daily-cards">
                         <img src="./assets/respirar-fundo.png" alt="">
                         <h3>Respire fundo 3 vezes</h3>
@@ -186,10 +206,15 @@
                         Inspire pelo nariz, solte pela boca.
                     </p>
 
-                    <button type="button"> Feito</button>
+                    <button type="button" class="btn-daily-cards"> Feito</button>
                 </div>
 
                 <div class="content-daily-cards">
+
+                    <div class="star">
+                        <img src="./assets/star.png" alt="estrela">
+                    </div>
+
                     <div class="title-daily-cards">
                         <img src="./assets/exercicio.png" alt="alongamento">
                         <h3>Alongue o corpo por 1 minuto</h3>
@@ -200,10 +225,14 @@
                         Seu corpo agradece.
                     </p>
 
-                    <button type="button"> Feito</button>
+                    <button type="button" class="btn-daily-cards"> Feito</button>
                 </div>
 
             </div>
+
+            <p class="congratulations">Dia concluído! Você fez sua parte hoje</p>
+
+            <p class="daily-footer">Você já começou e isso é muito bom!</p>
         </section>
 
         <!-- PROGRESS -->
@@ -218,7 +247,7 @@
 
             <div class="progress-counter">
                 <div class="days-concluded">
-                    <span>0</span>
+                    <span id="counter-days">0</span>
                     <p>Dias Concluídos</p>
                 </div>
 

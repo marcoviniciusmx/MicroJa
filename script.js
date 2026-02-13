@@ -13,9 +13,45 @@ const start = document.querySelector(".start")
 const dayHabit = document.querySelector(".habit")
 const transcription = document.querySelector(".transcription")
 const habits = document.querySelector(".habits")
+const mainContent = document.querySelector(".main-content")
+const btnDailyCards = document.querySelectorAll(".btn-daily-cards")
+const features = document.querySelector(".features")
+const footer = document.querySelector(".footer")
+const progress = document.querySelector(".progress")
+const congratulations = document.querySelector(".congratulations")
+const counterDays = document.querySelector("#counter-days")
+
+
+
+const paragraf = document.querySelector(".date")
+const today = new Date()
+
+const formatedDate = today.toLocaleDateString("pt-BR", {
+    weekday: "long",
+    day: "numeric",
+    month: "long"
+})
+
+paragraf.textContent = formatedDate
+
+
+const conclusionText = document.querySelector(".conclusion")
+
+let completedCount = 0
+const totalHabits = btnDailyCards.length
+
+
+
+
 
 iluminationBall.addEventListener("click", () => {
     body.classList.toggle("dark-theme")
+
+    if (body.classList.contains("dark-theme")) {
+        localStorage.setItem("theme", "dark")
+    } else {
+        localStorage.setItem("theme", "light")
+    }
 })
 
 
@@ -31,49 +67,68 @@ navLinks.forEach(link => {
 });
 
 
+
+
 dayHabit.addEventListener("click", () => {
-    document.querySelector(".main-content").style.display = "none"
-    document.querySelector(".features").style.display = "none"
-    document.querySelector(".footer").style.display = "none"
-    document.querySelector(".habits").style.display = "flex"
-    document.querySelector(".progress").style.display = "none"
+    mainContent.style.display = "none"
+    features.style.display = "none"
+    footer.style.display = "none"
+    habits.style.display = "flex"
+    progress.style.display = "none"
+
     main.classList.remove("main-appear")
 })
 
 transcription.addEventListener("click", () => {
-    document.querySelector(".main-content").style.display = "none"
-    document.querySelector(".features").style.display = "none"
-    document.querySelector(".footer").style.display = "none"
-    document.querySelector(".habits").style.display = "none"
-    document.querySelector(".progress").style.display = "flex"
-    main.classList.remove("main-appear")
+    mainContent.style.display = "none"
+    features.style.display = "none"
+    footer.style.display = "none"
+    habits.style.display = "none"
+    progress.style.display = "flex"
 
-    document.querySelector(".main-appear").classList.remove("active")
+    main.classList.remove("main-appear")
 })
 
 
 
 start.addEventListener("click", () => {
-    document.querySelector(".main-content").style.display = "flex"
-    document.querySelector(".features").style.display = "grid"
-    document.querySelector(".footer").style.display = "flex"
-    document.querySelector(".habits").style.display = "none"
-    document.querySelector(".progress").style.display = "none"
+    mainContent.style.display = "flex"
+    features.style.display = "grid"
+    footer.style.display = "flex"
+    habits.style.display = "none"
+    progress.style.display = "none"
 
-    document.querySelector(".main-appear").classList.add("active")
+    main.classList.remove("main-appear")
+    void main.offsetWidth
+    main.classList.add("main-appear")
 })
 
 
+btnDailyCards.forEach(button => {
+    button.addEventListener("click", () => {
 
-// dayHabit.addEventListener("click", () => {
-//     document.querySelector(".main").style.display = "none"
-//     document.querySelector(".footer").style.display = "none"
-//     document.querySelector(".daily-text-habits").style.display = "flex"
+        if (button.classList.contains("done")) return
 
-// })
+        const card = button.closest(".content-daily-cards")
+        const star = card.querySelector(".star")
 
-// start.addEventListener("click", () => {
-//     document.querySelector(".main").style.display = "flex"
-//     document.querySelector(".footer").style.display = "flex"
-//     document.querySelector(".daily-text-habits").style.display = "none"
-// })
+        card.style.background = "linear-gradient(135deg, #c6f7ff 0%, #f2fcff 100%)"
+
+        button.textContent = "Concluído"
+        button.classList.add("done")
+        button.disabled = true
+
+        if (star) {
+            star.style.display = "block"
+        }
+
+        completedCount++
+
+        conclusionText.textContent = `${completedCount}/${totalHabits} concluídos`
+
+        if (completedCount === totalHabits) {
+            congratulations.style.display = "block"
+        }
+        
+    })
+});
