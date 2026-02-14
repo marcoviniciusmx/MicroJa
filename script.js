@@ -50,10 +50,10 @@ paragraf.textContent = formatedDate
 
 const conclusionText = document.querySelector(".conclusion")
 const counterDays = document.querySelector("#counter-days")
+const counterSequency = document.querySelector("#counter-sequency")
 
 let completedCount = 0
 const totalHabits = btnDailyCards.length
-
 
 
 
@@ -123,6 +123,33 @@ start.addEventListener("click", () => {
 
 
 btnDailyCards.forEach(button => {
+
+    const savedState = localStorage.getItem(button.dataset.id)
+
+    if (savedState === "done") {
+        const card = button.closest(".content-daily-cards")
+        const star = card.querySelector(".star")
+
+        button.textContent = "Concluído"
+        button.classList.add("done")
+        button.disabled = true
+
+        if (star) {
+            star.style.display = "block"
+        }
+
+        card.classList.add("background-card")
+        completedCount++
+    }
+
+    conclusionText.textContent = `${completedCount}/${totalHabits} concluídos`
+
+    if (completedCount === totalHabits) {
+        sucess.style.display = "flex"
+        counterDays.textContent = completedCount / totalHabits
+    }
+
+
     button.addEventListener("click", () => {
 
         if (button.classList.contains("done")) return
@@ -136,9 +163,12 @@ btnDailyCards.forEach(button => {
         button.classList.add("done")
         button.disabled = true
 
+
         if (star) {
             star.style.display = "block"
         }
+
+        localStorage.setItem(button.dataset.id, "done")
 
         completedCount++
 
@@ -149,6 +179,5 @@ btnDailyCards.forEach(button => {
             sucess.style.display = "flex"
             counterDays.textContent = completedCount / totalHabits
         }
-
     })
 });

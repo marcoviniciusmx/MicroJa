@@ -515,12 +515,22 @@ body.dark-theme .content-daily-cards {
     }
 }
 
+.body.dark-theme .sucess {
+    gap: 1px;
+}
+
 body.dark-theme .congratulations {
     color: #6eff61;
     font-weight: 500;
     background: linear-gradient(135deg,
             rgba(131, 240, 121, 0.3) 10%,
             rgba(86, 235, 173, 0.4) 80%);
+}
+
+body.dark-theme .shine-sucess {
+    width: 25px;
+    height: 16px;
+    left: 62px;
 }
 
 body.dark-theme .background-card {
