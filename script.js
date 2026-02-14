@@ -21,7 +21,7 @@ const progress = document.querySelector(".progress")
 const congratulations = document.querySelector(".congratulations")
 const sucess = document.querySelector(".sucess")
 const imageSucess = document.querySelector(".shine-sucess")
-
+const reverseCard = document.querySelectorAll(".reverse-card")
 
 
 
@@ -129,6 +129,7 @@ btnDailyCards.forEach(button => {
     if (savedState === "done") {
         const card = button.closest(".content-daily-cards")
         const star = card.querySelector(".star")
+        const reverseCard = card.querySelector(".reverse-button-cards")
 
         button.textContent = "Concluído"
         button.classList.add("done")
@@ -136,6 +137,10 @@ btnDailyCards.forEach(button => {
 
         if (star) {
             star.style.display = "block"
+        }
+
+        if (reverseCard) {
+            reverseCard.style.display = "block"
         }
 
         card.classList.add("background-card")
@@ -156,8 +161,10 @@ btnDailyCards.forEach(button => {
 
         const card = button.closest(".content-daily-cards")
         const star = card.querySelector(".star")
+        const reverseCard = card.querySelector(".reverse-button-cards")
 
         card.classList.add("background-card")
+
 
         button.textContent = "Concluído"
         button.classList.add("done")
@@ -166,6 +173,10 @@ btnDailyCards.forEach(button => {
 
         if (star) {
             star.style.display = "block"
+        }
+
+        if (reverseCard) {
+            reverseCard.style.display = "block"
         }
 
         localStorage.setItem(button.dataset.id, "done")
@@ -181,3 +192,37 @@ btnDailyCards.forEach(button => {
         }
     })
 });
+
+
+
+document.addEventListener("click", (event) => {
+
+    if (event.target.classList.contains("reverse-card")) {
+
+        const card = event.target.closest(".content-daily-cards")
+        const button = card.querySelector(".btn-daily-cards")
+        const star = card.querySelector(".star")
+
+        card.classList.remove("background-card")
+
+        button.textContent = "Feito"
+        button.classList.remove("done")
+        button.disabled = false
+
+        if (star) {
+            star.style.display = "none"
+        }
+
+        event.target.style.display = "none"
+
+        completedCount--
+        conclusionText.textContent = `${completedCount}/${totalHabits} concluídos`
+
+        sucess.style.display = "none"
+
+        counterDays.textContent = 0
+
+        localStorage.removeItem(button.dataset.id)
+    }
+
+})

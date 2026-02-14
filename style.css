@@ -744,6 +744,15 @@ body.dark-theme .p-footer {
     font-size: .9rem;
 }
 
+.button-daily {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    flex-direction: column;
+}
+
 .content-daily-cards button {
     align-self: center;
     padding: 12px 0;
@@ -759,6 +768,15 @@ body.dark-theme .p-footer {
     cursor: pointer;
     word-spacing: 1px;
     transition: all .4s ease;
+}
+
+.reverse-button-cards {
+    display: none;
+    width: 25px;
+    position: absolute;
+    bottom: 5px;
+    left: 8px;
+    cursor: pointer;
 }
 
 .sucess {
