@@ -19,12 +19,15 @@ const features = document.querySelector(".features")
 const footer = document.querySelector(".footer")
 const progress = document.querySelector(".progress")
 const congratulations = document.querySelector(".congratulations")
-const counterDays = document.querySelector("#counter-days")
+const sucess = document.querySelector(".sucess")
+const imageSucess = document.querySelector(".shine-sucess")
+
 
 
 
 const paragraf = document.querySelector(".date")
 const today = new Date()
+const todayNumber = today.getDate()
 
 const formatedDate = today.toLocaleDateString("pt-BR", {
     weekday: "long",
@@ -32,13 +35,26 @@ const formatedDate = today.toLocaleDateString("pt-BR", {
     month: "long"
 })
 
+const actualDay = document.querySelectorAll(".calendary span")
+
+actualDay.forEach(span => {
+    if (Number(span.textContent) === todayNumber) {
+        span.classList.add("actual-day")
+    } else {
+        span.classList.remove("actual-day")
+    }
+})
+
 paragraf.textContent = formatedDate
 
 
 const conclusionText = document.querySelector(".conclusion")
+const counterDays = document.querySelector("#counter-days")
 
 let completedCount = 0
 const totalHabits = btnDailyCards.length
+
+
 
 
 
@@ -49,8 +65,10 @@ iluminationBall.addEventListener("click", () => {
 
     if (body.classList.contains("dark-theme")) {
         localStorage.setItem("theme", "dark")
+        imageSucess.src = "./assets/brilho-dark.png"
     } else {
         localStorage.setItem("theme", "light")
+        imageSucess.src = "./assets/brilho.png"
     }
 })
 
@@ -112,7 +130,7 @@ btnDailyCards.forEach(button => {
         const card = button.closest(".content-daily-cards")
         const star = card.querySelector(".star")
 
-        card.style.background = "linear-gradient(135deg, #c6f7ff 0%, #f2fcff 100%)"
+        card.classList.add("background-card")
 
         button.textContent = "Concluído"
         button.classList.add("done")
@@ -126,9 +144,11 @@ btnDailyCards.forEach(button => {
 
         conclusionText.textContent = `${completedCount}/${totalHabits} concluídos`
 
+
         if (completedCount === totalHabits) {
-            congratulations.style.display = "block"
+            sucess.style.display = "flex"
+            counterDays.textContent = completedCount / totalHabits
         }
-        
+
     })
 });
