@@ -13,6 +13,10 @@
   <a href="#-getting-started">Como executar</a>
 </p>
 
+<br>
+
+<img src="./assets/Mockup - MicroJá.png" alt="MicroJa Mockup" width="100%">
+
 ---
 
 ## 🏠 About the project
