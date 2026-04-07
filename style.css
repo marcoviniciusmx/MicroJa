@@ -27,8 +27,8 @@ body {
 .wrapper {
     width: 100%;
     min-height: 100vh;
-    overflow: hidden;
-    padding-top: 160px;
+    overflow-x: hidden;
+    padding-top: 140px;
 }
 
 /* =====================================================
@@ -275,9 +275,10 @@ body {
 
 .features {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 30px;
     margin: 100px 0;
+    width: min(90%, 1100px);
 }
 
 /* Cards de funcionalidade */
@@ -678,13 +679,12 @@ body.dark-theme .p-footer {
 
 .daily-cadrs {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 20px;
     margin: 30px 0;
-    width: 70%;
+    width: min(90%, 1100px);
     text-align: left;
 }
-
 
 .content-daily-cards {
     display: flex;
@@ -921,16 +921,14 @@ body.dark-theme .p-footer {
 
 .calendary {
     display: grid;
-    grid-template-columns: repeat(7, auto);
+    grid-template-columns: repeat(7, minmax(0, 1fr));
     gap: 8px;
-    background: linear-gradient(135deg,
-            #ffffff 0%,
-            #f5f7f6 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7f6 100%);
     justify-content: center;
     border: 1px solid #00000036;
     padding: 10px;
     border-radius: 20px;
-    width: 35%;
+    width: min(90%, 520px);
 
     & span {
         display: flex;
@@ -990,5 +988,369 @@ body.dark-theme .p-footer {
 
     100% {
         transform: translateY(0);
+    }
+}
+
+/* =====================================================
+   RESPONSIVIDADE
+===================================================== */
+
+/* ---------- Desktop menor / notebook ---------- */
+@media (max-width: 1200px) {
+    .header {
+        padding: 15px 24px;
+    }
+
+    .logo {
+        margin-left: 0;
+    }
+
+    .ilumination-mode {
+        margin-right: 0;
+    }
+
+    .nav {
+        gap: 20px;
+    }
+
+    .content .title-content {
+        width: 85%;
+        font-size: 2.6rem;
+    }
+
+    .content .description-content {
+        width: 70%;
+    }
+
+    .features {
+        width: min(90%, 1000px);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    .daily-cadrs {
+        width: min(90%, 1000px);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .calendary {
+        width: min(90%, 500px);
+    }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+    .wrapper {
+        padding-top: 130px;
+    }
+
+    .header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 16px;
+        padding: 14px 18px;
+    }
+
+    .logo {
+        width: 100%;
+        justify-content: center;
+        margin-left: 0;
+    }
+
+    .nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .ilumination-mode {
+        margin-right: 0;
+    }
+
+    .ilumination-ball {
+        top: 93px;
+        left: 46%;
+    }
+
+    .img-content img {
+        width: 75px;
+    }
+
+    .content .title-content {
+        width: 90%;
+        font-size: 2.2rem;
+        line-height: 1.2;
+    }
+
+    .content .description-content {
+        width: 85%;
+        font-size: 1rem;
+        line-height: 1.5;
+    }
+
+    .button-cta {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .button-cta button {
+        width: min(100%, 320px);
+        justify-content: center;
+        padding: 14px 24px;
+    }
+
+    .features {
+        width: min(92%, 700px);
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin: 70px 0;
+    }
+
+    .daily-cadrs {
+        width: min(92%, 700px);
+        grid-template-columns: 1fr;
+    }
+
+    .progress-counter {
+        grid-template-columns: 1fr;
+        width: min(92%, 500px);
+    }
+
+    .days-concluded,
+    .sequence-counter {
+        padding: 24px;
+    }
+
+    .calendary {
+        width: min(92%, 500px);
+        grid-template-columns: repeat(7, 1fr);
+    }
+
+    .calendary span {
+        justify-content: center;
+        padding: 14px 0;
+        font-size: .85rem;
+    }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 600px) {
+    .wrapper {
+        padding-top: 160px;
+    }
+
+    .header {
+        gap: 14px;
+        padding: 12px 14px;
+    }
+
+    .logo .sheets-logo {
+        width: 24px;
+    }
+
+    .logo .title-logo {
+        font-size: 1.1rem;
+    }
+
+    .nav {
+        gap: 10px 14px;
+    }
+
+    .nav a {
+        font-size: .85rem;
+    }
+
+    .ilumination-mode {
+        gap: 12px;
+        padding: 4px 8px;
+    }
+
+    .dark-mode,
+    .light-mode {
+        width: 16px;
+        height: 16px;
+    }
+
+    .ilumination-ball {
+        width: 22px;
+        height: 22px;
+        top: 80px;
+        left: 43.5%;
+    }
+
+    body.dark-theme .ilumination-ball {
+        transform: translateX(30px);
+    }
+
+    .main {
+        padding: 0 16px;
+    }
+
+    .img-content {
+        margin-bottom: 14px;
+    }
+
+    .img-content img {
+        width: 62px;
+    }
+
+    .content {
+        gap: 16px;
+    }
+
+    .content .title-content {
+        width: 100%;
+        font-size: 1.9rem;
+    }
+
+    .content .description-content {
+        width: 100%;
+        font-size: .95rem;
+    }
+
+    .button-cta button {
+        width: 100%;
+        max-width: 100%;
+        font-size: .95rem;
+        padding: 13px 18px;
+        border-radius: 12px;
+    }
+
+    .content-catchphrase {
+        font-size: .75rem;
+        text-align: center;
+        line-height: 1.4;
+    }
+
+    .features {
+        width: 100%;
+        margin: 50px 0;
+    }
+
+    .feature-card {
+        padding: 22px 14px;
+        border-radius: 24px;
+    }
+
+    .feature-card p {
+        width: 100%;
+        font-size: .85rem;
+    }
+
+    .daily-text-habits h2,
+    .progress-texts h2 {
+        font-size: 1.6rem;
+    }
+
+    .description-daily-text,
+    .habits-progress,
+    .p-footer,
+    .daily-footer {
+        width: 100%;
+        font-size: .85rem;
+        text-align: center;
+    }
+
+    .daily-cadrs {
+        width: 100%;
+        gap: 16px;
+        margin: 24px 0;
+    }
+
+    .content-daily-cards {
+        padding: 18px 14px;
+        gap: 16px;
+    }
+
+    .title-daily-cards {
+        gap: 10px;
+    }
+
+    .title-daily-cards h3 {
+        max-width: 100%;
+        font-size: .95rem;
+    }
+
+    .description-daily-cards {
+        font-size: .85rem;
+        line-height: 1.5;
+    }
+
+    .content-daily-cards button {
+        width: 100%;
+        margin: 14px 0 6px;
+        font-size: .95rem;
+    }
+
+    .congratulations {
+        margin: 20px 0;
+        font-size: .85rem;
+        padding: 10px 12px 10px 28px;
+    }
+
+    .shine-sucess {
+        left: 52px;
+        top: 35px;
+        width: 15px;
+        height: 15px;
+    }
+
+    .progress-counter {
+        width: 100%;
+        margin: 30px 0;
+    }
+
+    .days-concluded span,
+    .texts-sequence-counter span {
+        font-size: 1.7rem;
+    }
+
+    .texts-sequence-counter img {
+        width: 28px;
+    }
+
+    .calendary {
+        width: 100%;
+        gap: 6px;
+        padding: 8px;
+    }
+
+    .calendary span {
+        padding: 12px 0;
+        border-radius: 12px;
+        font-size: .8rem;
+    }
+
+    .footer {
+        padding: 16px;
+    }
+
+    .footer .content-footer {
+        font-size: .8rem;
+        line-height: 1.4;
+    }
+}
+
+/* ---------- Mobile muito pequeno ---------- */
+@media (max-width: 380px) {
+    .wrapper {
+        padding-top: 175px;
+    }
+
+    .content .title-content {
+        font-size: 1.7rem;
+    }
+
+    .nav a {
+        font-size: .8rem;
+    }
+
+    .calendary span {
+        font-size: .72rem;
+        padding: 10px 0;
+    }
+
+    .feature-card h3 {
+        font-size: .95rem;
     }
 }
